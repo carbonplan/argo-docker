@@ -10,12 +10,8 @@ RUN chmod +x argo-linux-amd64
 
 # Based on https://github.com/nebari-dev/nebari-docker-images/issues/83
 
-RUN mkdir -p ~/bin/argo
-RUN mv ./argo-linux-amd64 ~/bin/argo
-RUN echo 'export PATH="/home/${USER}/bin/argo:$PATH"'
-RUN echo 'alias argo="argo-linux-amd64"' >> ~/.bashrc
-
-ENV ARGO_SERVER='your_nebari_url:443' 
+RUN mv ./argo-linux-amd64 /usr/local/bin/argo
+ENV ARGO_SERVER='https://carbonplan.quansight.dev:443'
 ENV ARGO_HTTP1=true  
 ENV ARGO_SECURE=true
 ENV ARGO_BASE_HREF=/argo
