@@ -1,5 +1,4 @@
 FROM quay.io/nebari/nebari-jupyterlab:2024.3.2
-
 USER root
 
 RUN apt-get update && apt-get install -y --no-install-recommends curl
@@ -9,8 +8,11 @@ RUN gunzip argo-linux-amd64.gz
 RUN chmod +x argo-linux-amd64
 
 # Based on https://github.com/nebari-dev/nebari-docker-images/issues/83
+ENV ARGO_HOME='/opt/argo'
+RUN mkdir -p ${ARGO_HOME}
+RUN mv ./argo-linux-amd64 ${ARGO_HOME}/argo
 
-RUN mv ./argo-linux-amd64 /usr/local/bin/argo
+ENV PATH=${ARGO_HOME}:${PATH}
 ENV ARGO_SERVER='https://carbonplan.quansight.dev:443'
 ENV ARGO_HTTP1=true  
 ENV ARGO_SECURE=true
