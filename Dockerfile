@@ -1,4 +1,9 @@
 FROM quay.io/nebari/nebari-jupyterlab:2024.3.2
+
+RUN mamba config --env --add channels conda-forge
+RUN mamba config --env --set channel_priority strict
+RUN mamba env update --prefix ${CONDA_DIR} --file environment.yml
+
 USER root
 
 RUN apt-get update && apt-get install -y --no-install-recommends curl
