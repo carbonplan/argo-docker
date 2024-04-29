@@ -1,9 +1,0 @@
-#!/bin/bash -l
-
-# ==== ONLY EDIT WITHIN THIS BLOCK =====
-
-conda activate base
-
-# ==== ONLY EDIT WITHIN THIS BLOCK =====
-
-exec "$@"
