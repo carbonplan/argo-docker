@@ -1,4 +1,4 @@
-FROM quay.io/nebari/nebari-jupyterlab:2024.11.1
+FROM quay.io/nebari/nebari-jupyterlab:2024.12.1
 
 USER root
 
